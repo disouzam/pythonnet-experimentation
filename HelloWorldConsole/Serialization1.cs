@@ -24,8 +24,6 @@ internal static class Serialization1
 
         using(Py.GIL())
         {
-            PythonEngine.Exec(scriptContent);
-
             using var scope = Py.CreateScope();
             scope.Exec(scriptContent);
         }
