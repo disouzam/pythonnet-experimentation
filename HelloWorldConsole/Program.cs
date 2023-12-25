@@ -15,11 +15,11 @@
 #endif
 
 #if !SERIALIZATION3
-#define SERIALIZATION3
+// #define SERIALIZATION3
 #endif
 
 #if !SERIALIZATION4
-//#define SERIALIZATION4
+#define SERIALIZATION4
 #endif
 
 #if !SERIALIZATION5
