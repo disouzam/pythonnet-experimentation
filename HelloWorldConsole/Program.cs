@@ -3,7 +3,31 @@
 #endif
 
 #if !SCRIPTFILE
-#define SCRIPTFILE
+//#define SCRIPTFILE
+#endif
+
+#if !SERIALIZATION1
+//#define SERIALIZATION1
+#endif
+
+#if !SERIALIZATION2
+//#define SERIALIZATION2
+#endif
+
+#if !SERIALIZATION3
+//#define SERIALIZATION3
+#endif
+
+#if !SERIALIZATION4
+//#define SERIALIZATION4
+#endif
+
+#if !SERIALIZATION5
+//#define SERIALIZATION5
+#endif
+
+#if !SERIALIZATION6
+//#define SERIALIZATION6
 #endif
 
 using System;
@@ -42,6 +66,30 @@ internal static class Program
 
         PythonEngine.Shutdown();
         Console.WriteLine("Finished execution of console app.");
+#endif
+
+#if SERIALIZATION1
+        Serialization1.Run();
+#endif
+
+#if SERIALIZATION2
+        Serialization2.Run();
+#endif
+
+#if SERIALIZATION3
+        Serialization3.Run();
+#endif
+
+#if SERIALIZATION4
+        Serialization4.Run();
+#endif
+
+#if SERIALIZATION5
+        Serialization5.Run();
+#endif
+
+#if SERIALIZATION6
+        Serialization6.Run();
 #endif
     }
 }
