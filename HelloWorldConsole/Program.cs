@@ -7,11 +7,11 @@
 #endif
 
 #if !SERIALIZATION1
-#define SERIALIZATION1
+//#define SERIALIZATION1
 #endif
 
 #if !SERIALIZATION2
-//#define SERIALIZATION2
+#define SERIALIZATION2
 #endif
 
 #if !SERIALIZATION3
