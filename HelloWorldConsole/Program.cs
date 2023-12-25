@@ -1,29 +1,29 @@
 ﻿#if !EXECUTENATIVECSHARPCODE
-//#define EXECUTENATIVECSHARPCODE
+#define EXECUTENATIVECSHARPCODE
 #endif
 
 #if !SCRIPTFILE
-//#define SCRIPTFILE
+#define SCRIPTFILE
 #endif
 
 #if !SERIALIZATION1
-//#define SERIALIZATION1
+#define SERIALIZATION1
 #endif
 
 #if !SERIALIZATION2
-//#define SERIALIZATION2
+#define SERIALIZATION2
 #endif
 
 #if !SERIALIZATION3
-// #define SERIALIZATION3
+#define SERIALIZATION3
 #endif
 
 #if !SERIALIZATION4
-// #define SERIALIZATION4
+#define SERIALIZATION4
 #endif
 
 #if !SERIALIZATION5
-// #define SERIALIZATION5
+#define SERIALIZATION5
 #endif
 
 #if !SERIALIZATION6
@@ -50,14 +50,12 @@ internal static class Program
         PythonEngine.Initialize();
 
         var basePath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory);
-        var scriptFilePath = Path.Combine(basePath.FullName, "PythonScripts","scriptFile.py");
+        var scriptFilePath = Path.Combine(basePath.FullName, "PythonScripts", "scriptFile.py");
 
         var scriptContent = File.ReadAllText(scriptFilePath, System.Text.Encoding.UTF8);
 
         using(Py.GIL())
         {
-            PythonEngine.Exec(scriptContent);
-
             using var scope = Py.CreateScope();
             scope.Exec(scriptContent);
             dynamic greetings = scope.Get("greetings");
@@ -69,27 +67,87 @@ internal static class Program
 #endif
 
 #if SERIALIZATION1
-        Serialization1.Run();
+        try
+        {
+            Serialization1.Run();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine();
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.StackTrace);
+            Console.WriteLine();
+        }
 #endif
 
 #if SERIALIZATION2
-        Serialization2.Run();
+        try
+        {
+            Serialization2.Run();
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine();
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.StackTrace);
+            Console.WriteLine();
+        }
 #endif
 
 #if SERIALIZATION3
-        Serialization3.Run();
+        try
+        {
+            Serialization3.Run();
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine();
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.StackTrace);
+            Console.WriteLine();
+        }
 #endif
 
 #if SERIALIZATION4
-        Serialization4.Run();
+        try
+        {
+            Serialization4.Run();
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine();
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.StackTrace);
+            Console.WriteLine();
+        }
 #endif
 
 #if SERIALIZATION5
-        Serialization5.Run();
+        try
+        {
+            Serialization5.Run();
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine();
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.StackTrace);
+            Console.WriteLine();
+        }
 #endif
 
 #if SERIALIZATION6
-        Serialization6.Run();
+        try
+        {
+            Serialization6.Run();
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine();
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.StackTrace);
+            Console.WriteLine();
+        }
 #endif
     }
 }
