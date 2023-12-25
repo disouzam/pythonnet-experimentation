@@ -15,22 +15,34 @@ internal static class Serialization3
 {
     public static void Run()
     {
-        Runtime.PythonDLL = @"C:\Program Files\Python312\python312.dll";
-        PythonEngine.Initialize();
-
-        var basePath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory);
-        var scriptFilePath = Path.Combine(basePath.FullName, "PythonScripts", "serialization3.py");
-
-        var scriptContent = File.ReadAllText(scriptFilePath, System.Text.Encoding.UTF8);
-
-        using(Py.GIL())
+        try
         {
-            using var scope = Py.CreateScope();
-            scope.Exec(scriptContent);
-        }
+            Runtime.PythonDLL = @"C:\Program Files\Python312\python312.dll";
+            PythonEngine.Initialize();
 
-        PythonEngine.Shutdown();
-        Console.WriteLine("Finished execution of Run method of Serialization3 class.");
+            var basePath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory);
+            var scriptFilePath = Path.Combine(basePath.FullName, "PythonScripts", "serialization3.py");
+
+            var scriptContent = File.ReadAllText(scriptFilePath, System.Text.Encoding.UTF8);
+
+            using(Py.GIL())
+            {
+                using var scope = Py.CreateScope();
+                scope.Exec(scriptContent);
+            }
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine();
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.StackTrace);
+            Console.WriteLine();
+        }
+        finally
+        {
+            PythonEngine.Shutdown();
+            Console.WriteLine("Finished execution of Run method of Serialization3 class.");
+        }
     }
 }
 #endif
