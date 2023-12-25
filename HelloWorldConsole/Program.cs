@@ -1,8 +1,4 @@
-﻿#if !EXECUTENATIVECSHARPCODE
-#define EXECUTENATIVECSHARPCODE
-#endif
-
-#if !SCRIPTFILE
+﻿#if !SCRIPTFILE
 #define SCRIPTFILE
 #endif
 
@@ -41,10 +37,6 @@ internal static class Program
 {
     static void Main(string[] args)
     {
-#if EXECUTENATIVECSHARPCODE
-        Console.WriteLine("Hello, World!");
-#endif
-
 #if SCRIPTFILE
         Runtime.PythonDLL = @"C:\Program Files\Python312\python312.dll";
         PythonEngine.Initialize();
