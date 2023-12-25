@@ -11,9 +11,9 @@ using Python.Runtime;
 
 namespace HelloWorldConsole;
 
-internal static class Serialization4
+internal class Serialization4 : IDisposable
 {
-    public static void Run()
+    public void Run()
     {
         Runtime.PythonDLL = @"C:\Program Files\Python312\python312.dll";
         PythonEngine.Initialize();
@@ -29,8 +29,20 @@ internal static class Serialization4
             scope.Exec(scriptContent);
         }
 
-        PythonEngine.Shutdown();
         Console.WriteLine("Finished execution of Run method of Serialization4 class.");
+    }
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        // Cleanup
+        PythonEngine.Shutdown();
+        Console.WriteLine("Dispose method of Serialization4 class was called");
     }
 }
 #endif

@@ -111,7 +111,8 @@ internal static class Program
 #if SERIALIZATION4
         try
         {
-            Serialization4.Run();
+            var serialization4 = new Serialization4();
+            serialization4.Run();
         }
         catch(Exception ex)
         {
