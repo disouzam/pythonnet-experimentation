@@ -38,23 +38,22 @@ internal static class Program
     static void Main(string[] args)
     {
 #if SCRIPTFILE
-        Runtime.PythonDLL = @"C:\Program Files\Python312\python312.dll";
-        PythonEngine.Initialize();
-
-        var basePath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory);
-        var scriptFilePath = Path.Combine(basePath.FullName, "PythonScripts", "scriptFile.py");
-
-        var scriptContent = File.ReadAllText(scriptFilePath, System.Text.Encoding.UTF8);
-
-        using(Py.GIL())
+        using(var runtimeManager = new PythonRuntimeManager())
         {
-            using var scope = Py.CreateScope();
-            scope.Exec(scriptContent);
-            dynamic greetings = scope.Get("greetings");
-            Console.WriteLine(greetings("world of Python.NET Nuget package"));
+            var basePath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory);
+            var scriptFilePath = Path.Combine(basePath.FullName, "PythonScripts", "scriptFile.py");
+
+            var scriptContent = File.ReadAllText(scriptFilePath, System.Text.Encoding.UTF8);
+
+            using(Py.GIL())
+            {
+                using var scope = Py.CreateScope();
+                scope.Exec(scriptContent);
+                dynamic greetings = scope.Get("greetings");
+                Console.WriteLine(greetings("world of Python.NET Nuget package"));
+            }
         }
 
-        PythonEngine.Shutdown();
         Console.WriteLine("Finished execution of console app.");
 #endif
 
@@ -63,7 +62,7 @@ internal static class Program
         {
             Serialization1.Run();
         }
-        catch (Exception ex)
+        catch(Exception ex)
         {
             Console.WriteLine();
             Console.WriteLine(ex.Message);
