@@ -19,11 +19,11 @@
 #endif
 
 #if !SERIALIZATION4
-#define SERIALIZATION4
+// #define SERIALIZATION4
 #endif
 
 #if !SERIALIZATION5
-//#define SERIALIZATION5
+#define SERIALIZATION5
 #endif
 
 #if !SERIALIZATION6
