@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -8,13 +8,39 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="python" Version="3.12.1" />
     <PackageReference Include="pythonnet" Version="3.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(Pkgpython)\tools\**\*" Link="tools\%(RecursiveDir)%(Filename)%(Extension)"
+      CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="PythonScripts\*.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="PythonScripts\regressionX.pkl">
+      <Link>%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="PythonScripts\regressionY.pkl">
+      <Link>%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="PythonScripts\linear_regression.pkl">
+      <Link>%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="PythonScripts\*.bat">
+      <Link>tools\%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
+
+  <Target Name="PostBuild1" AfterTargets="PostBuildEvent">
+    <Exec Command="call $(OutputPath)tools\install-pip-packages.bat $(OutputPath)tools" />
+  </Target>
 
 </Project>
