@@ -7,11 +7,14 @@ cd %1
 
 dir
 
+ECHO "Updating pip version"
+call python.exe -m pip install --upgrade pip
+
 ECHO "Installing Numpy"
 call python.exe -m pip install Numpy
 
-ECHO "Installing pandas"
-call python.exe -m pip install pandas
+@REM ECHO "Installing pandas"
+@REM call python.exe -m pip install pandas
 
 ECHO "Installing Scikit-learn"
 call python.exe -m pip install scikit-learn
