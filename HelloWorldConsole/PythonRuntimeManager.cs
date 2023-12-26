@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 using Python.Runtime;
 
@@ -6,10 +7,11 @@ namespace HelloWorldConsole;
 
 internal class PythonRuntimeManager : IDisposable
 {
-
     public PythonRuntimeManager()
     {
-        Runtime.PythonDLL = @"C:\Program Files\Python312\python312.dll";
+        var basePath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory);
+        var pythonDllPath = Path.Combine(basePath.FullName, "tools", "python312.dll");
+        Runtime.PythonDLL = pythonDllPath;
         PythonEngine.Initialize();
     }
 

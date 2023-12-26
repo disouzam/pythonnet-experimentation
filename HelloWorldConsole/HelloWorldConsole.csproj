@@ -8,8 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="python" Version="3.12.1" />
     <PackageReference Include="pythonnet" Version="3.0.3" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="$(Pkgpython)\**\*" CopyToOutputDirectory="PreserveNewest"/>
+</ItemGroup>
 
   <ItemGroup>
     <None Update="PythonScripts\*.py">
