@@ -18,6 +18,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="PythonScripts\*.bat">
+      <Link>tools\%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="PythonScripts/requirements.txt">
+      <Link>tools\%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="PythonScripts\*.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -31,10 +39,6 @@
     </None>
     <None Update="PythonScripts\linear_regression.pkl">
       <Link>%(Filename)%(Extension)</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="PythonScripts\*.bat">
-      <Link>tools\%(Filename)%(Extension)</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
