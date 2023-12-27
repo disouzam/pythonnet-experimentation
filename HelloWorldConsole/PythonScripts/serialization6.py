@@ -15,6 +15,10 @@ with open("regressionY.pkl", "wb") as f:
 linear_model = LinearRegression()
 linear_model.fit(X, y)
 
+print("Prediction initiated")
+print(linear_model.predict(X))
+print("Prediction ended")
+
 # summary of the model
 print('Model intercept :', linear_model.intercept_)
 print('Model coefficients : ', linear_model.coef_)
@@ -30,3 +34,7 @@ with open("linear_regression.pkl", "rb") as f:
 print('Model intercept :', unpickled_linear_model.intercept_)
 print('Model coefficients : ', unpickled_linear_model.coef_)
 print('Model score : ', unpickled_linear_model.score(X, y))
+
+print("Prediction initiated")
+print(unpickled_linear_model.predict(X))
+print("Prediction ended")
