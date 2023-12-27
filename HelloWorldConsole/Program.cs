@@ -30,6 +30,10 @@
 #define UNPICKLING1
 #endif
 
+#if !UNPICKLING2
+#define UNPICKLING2
+#endif
+
 using System;
 using System.IO;
 
@@ -150,6 +154,20 @@ internal static class Program
         try
         {
             Unpickling1.Run();
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine();
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.StackTrace);
+            Console.WriteLine();
+        }
+#endif
+
+#if UNPICKLING2
+        try
+        {
+            Unpickling2.Run();
         }
         catch(Exception ex)
         {
