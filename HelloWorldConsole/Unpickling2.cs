@@ -28,6 +28,9 @@ internal static class Unpickling2
                 {
                     using var scope = Py.CreateScope();
                     scope.Exec(scriptContent);
+
+                    dynamic X = scope.Get("X");
+                    Console.WriteLine(X);
                 }
 
                 Console.WriteLine("Finished execution of Run method of Unpickling2 class.");
