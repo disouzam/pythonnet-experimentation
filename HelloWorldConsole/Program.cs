@@ -1,33 +1,33 @@
 ﻿#if !SCRIPTFILE
-#define SCRIPTFILE
+//#define SCRIPTFILE
 #endif
 
 #if !SERIALIZATION1
-#define SERIALIZATION1
+//#define SERIALIZATION1
 #endif
 
 #if !SERIALIZATION2
-#define SERIALIZATION2
+//#define SERIALIZATION2
 #endif
 
 #if !SERIALIZATION3
-#define SERIALIZATION3
+//#define SERIALIZATION3
 #endif
 
 #if !SERIALIZATION4
-#define SERIALIZATION4
+//#define SERIALIZATION4
 #endif
 
 #if !SERIALIZATION5
-#define SERIALIZATION5
+//#define SERIALIZATION5
 #endif
 
 #if !SERIALIZATION6
-#define SERIALIZATION6
+//#define SERIALIZATION6
 #endif
 
 #if !UNPICKLING1
-#define UNPICKLING1
+//#define UNPICKLING1
 #endif
 
 #if !UNPICKLING2
